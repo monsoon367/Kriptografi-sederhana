@@ -4,21 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kriptografi</title>
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-    <h1>pototipe</h1>
+    <h1>Kriptografi Caesar Chiper</h1>
+    <h4>Kel.3 PL 1 A</h4>
     <div class="container">
-        <textarea id="text"></textarea>
-        <input type="number" id="shift" min="1" max="25" value="3">
-        <button onclick="encrypt()">Encrypt</button>
-        <button onclick="decrypt()">Decrypt</button>
-        <button onclick="copy()">Copy encrypt text</button>
-        <button onclick="reset()">Reset</button>
-        <textarea id="result" readonly></textarea>
-        <button onclick="about()">About</button>
+        <div id="IOcontainer">
+            <div>
+                <label for="Input Text">Input Text</label>
+                <br>
+                <textarea id="text"></textarea>
+            </div>
+            <div>
+                <label for="Result">Result</label>
+                <br>
+                <textarea id="result" readonly></textarea>
+            </div>
+        </div>
+
+        <div id="IkeyContainer">
+            <div id="Ikey">
+                <label for="inputKey">Input Key</label>
+                <br>
+                <input type="number" placeholder="Full Name" autocomplete="off" id="shift" min="0" max="25" value="0">
+                <button onclick="resetKey()">Reset Key</button>
+            </div>
+        </div>
+        
+
+        <div id="buttonsContainer">
+            <button onclick="encrypt()">Encrypt</button>
+            <button onclick="decrypt()">Decrypt</button>
+            <button onclick="reset()">Reset</button>
+            <button onclick="copyToClipboard()">Copy Result Text</button>
+            <button onclick="copyToInput()">Copy To Input</button>
+            <button onclick="about()">About</button>
+        </div>
+
+
+
     </div>
 
 
-    <script src="./script.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
 </html>

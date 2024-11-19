@@ -24,7 +24,7 @@ function caesarCipher(text, shift) {
                 char = String.fromCharCode(((code - 97 + shift) % 26) + 97);
             }
         }
-     result += char
+    result += char
 }
 return result;
 }

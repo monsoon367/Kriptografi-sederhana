@@ -1,0 +1,39 @@
+*, html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+#IOcontainer  {
+    width: 100%;
+    display: flex;
+    padding: 20px 100px;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+}
+#IOcontainer div {
+    width: 100%;
+    height: 60vh;
+
+}
+#IOcontainer textarea {
+    resize: none;
+    width: 100%;
+    height: 100%;
+}
+
+#IkeyContainer {
+    width: 100%;
+    padding: 20px 100px;
+}
+
+#buttonsContainer  {
+    width: 100%;
+    display: flex;
+    padding: 10px 100px;
+    align-items: center;
+    gap: 1rem;
+}
