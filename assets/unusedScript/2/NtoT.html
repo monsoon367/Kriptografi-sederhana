@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konversi Nomor ke Huruf</title>
+</head>
+<body>
+    <h1>Konversi Nomor ke Huruf</h1>
+    <form>
+        <label for="numberInput">Masukkan Nomor (0-25):</label>
+        <input type="number" id="numberInput" min="0" max="25" placeholder="Masukkan angka">
+        <button type="button" onclick="convertNumber()">Konversi</button>
+    </form>
+    <p id="output"></p>
+
+    <script>
+        // Fungsi konversi nomor ke huruf
+        function numberToLetter(num) {
+            if (num < 0 || num > 25) {
+                throw new Error("Number must be in the range 0-25.");
+            }
+            return String.fromCharCode(97 + num);
+        }
+
+        // Fungsi untuk memproses input dari HTML
+        function convertNumber() {
+            try {
+                const num = parseInt(document.getElementById("numberInput").value, 10);
+                const letter = numberToLetter(num);
+                document.getElementById("output").innerText = `Huruf yang sesuai: ${letter}`;
+            } catch (error) {
+                document.getElementById("output").innerText = error.message;
+            }
+        }
+    </script>
+</body>
+</html>

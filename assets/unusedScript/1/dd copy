@@ -1,0 +1,124 @@
+const elements = {
+  textInput: document.getElementById("text"),
+  keyInput: document.getElementById("shift"),
+  tlOF: document.getElementById("tlOF"),
+  mfOF: document.getElementById("mfOF"),
+  slider: document.getElementById("slider"),
+  about: document.getElementById("about"),
+  encryptBtn: document.getElementById("encryptBtn"),
+  decryptBtn: document.getElementById("decryptBtn"),
+  output: document.getElementById("output"),
+};
+
+console.log("WARNING! THIS WEBSITE IS NOT RESPONSIVE FOR DEVICE WITH SCREEN RESOLUTION BELOW 1000x720px!!!");
+
+// Encryption/Decryption functions
+const caesarCipher = (text, key, decrypt = false) => {
+  if (decrypt) key = (26 - key) % 26;
+  return [...text].map((char) => {
+    if (/[a-zA-Z]/.test(char)) {
+      const base = char >= "a" ? 97 : 65;
+      return String.fromCharCode(((char.charCodeAt(0) - base + key) % 26) + base);
+    }
+    return char;
+  }).join('');
+};
+
+// Toggle negative key for decrypt
+elements.encryptBtn.addEventListener("click", () => elements.keyInput.classList.remove("negativeKey"));
+elements.decryptBtn.addEventListener("click", () => elements.keyInput.classList.add("negativeKey"));
+
+// Convert text to custom numbers
+const convertToCustomNumbers = () => {
+  const text = elements.textInput.value.toUpperCase();
+  const key = parseInt(elements.keyInput.value);
+  if (!text) return showMessage("Please input text!", false);
+
+  const results = text.split('').map((char) => {
+    if (char >= 'A' && char <= 'Z') {
+      const c = char.charCodeAt(0) - 65;
+      const h = c + key;
+      const z = ((h % 26) + 26) % 26; // Handle negatives
+      const resultLetter = String.fromCharCode(97 + z);
+      return `${char} => ${c} + ${key} = ${h} => ${z} mod 26 = ${resultLetter}`;
+    }
+    return char;
+  });
+
+  displayOutput(results, true);
+};
+
+// Handle encryption or decryption
+const processText = (decrypt = false, loop = false) => {
+  const { value: text } = elements.textInput;
+  const key = parseInt(elements.keyInput.value);
+  if (!text) return showMessage(`Please input text to ${decrypt ? "decrypt" : "encrypt"}!`, false);
+
+  elements.output.classList.toggle("loopBorder", loop);
+
+  if (loop) {
+    elements.output.innerHTML = Array.from({ length: key + 1 }, (_, i) => {
+      const processedText = caesarCipher(text, i, decrypt);
+      return `<div class="my-class">key ${i} : ${processedText}</div>`;
+    }).join('');
+  } else {
+    const result = caesarCipher(text, key, decrypt);
+    displayOutput([result], false);
+  }
+};
+
+// Display message in output
+const showMessage = (message, addClass) => {
+  elements.output.innerHTML = message;
+  if (addClass) elements.output.classList.add("loopBorder");
+  setTimeout(() => elements.output.innerHTML = "", 3000);
+};
+
+// Display output
+const displayOutput = (results, loop) => {
+  elements.output.innerHTML = results.map(r => `<div class="my-class">${r}</div>`).join('');
+  if (!loop) elements.output.classList.remove("loopBorder");
+};
+
+// Copy and reset functionality
+const copyToClipboard = () => {
+  const text = elements.output.innerText;
+  if (!text) return alert("There's no text to copy.");
+  navigator.clipboard.writeText(text).then(() => alert("Text copied!")).catch(() => alert("Failed to copy text."));
+};
+
+const copyToInput = () => {
+  const text = elements.output.innerText;
+  if (!text) return alert("There's no text to copy.");
+  elements.textInput.value = text;
+  elements.output.innerHTML = "";
+};
+
+const resetFields = () => {
+  elements.textInput.value = "";
+  elements.keyInput.value = 0;
+  elements.output.innerHTML = "";
+};
+
+// Toggle options
+elements.tlOF.addEventListener("click", () => elements.mfOF.checked = !elements.tlOF.checked);
+elements.mfOF.addEventListener("click", () => elements.tlOF.checked = !elements.mfOF.checked);
+
+// Button actions
+elements.encryptBtn.addEventListener("click", () => {
+  if (elements.tlOF.checked) processText(false, true);
+  else if (elements.mfOF.checked) convertToCustomNumbers();
+  else processText(false);
+});
+
+elements.decryptBtn.addEventListener("click", () => {
+  if (elements.tlOF.checked) processText(true, true);
+  else if (elements.mfOF.checked) convertToCustomNumbers();
+  else processText(true);
+});
+
+// About button
+elements.about.addEventListener("click", () => {
+  elements.about.href = "./assets/img,vid/vid/1/2/1/ick.mp4";
+  window.location.href = elements.about.href;
+});

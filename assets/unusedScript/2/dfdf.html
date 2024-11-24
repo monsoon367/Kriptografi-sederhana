@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" name="" id="IN">
+    <button id="E">E</button>
+    <button id="D">D</button>
+
+    <script>
+        let IN = document.getElementById("IN");
+        let E = document.getElementById("E");
+        let D = document.getElementById("D");
+
+        E.addEventListener("click",() => {
+            IN.value = IN.value;
+        })
+        D.addEventListener("click",() => {
+            k = IN.value;
+            n = k - (k*2)
+            console.log(n);
+        })
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop Function</title>
+    <script>
+        // Function to execute the loop
+        function runLoop() {
+            // Get the number of loops from the input field
+            const loopCount = parseInt(document.getElementById("loopCount").value);
+            const output = document.getElementById("output");
+
+            // Clear previous output
+            output.innerHTML = "";
+
+            // Execute the loop and display results
+            for (let i = 0; i <= loopCount; i++) {
+                const result = document.createElement("div");
+                result.textContent = `Iteration ${i}`;
+                output.appendChild(result);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Customizable Loop Function</h1>
+    <label for="loopCount">Enter number of loops:</label>
+    <input type="number" id="loopCount" placeholder="e.g., 5">
+    <button onclick="runLoop()">Run Loop</button>
+
+    <h2>Output:</h2>
+    <div id="output" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;"></div>
+</body>
+</html>
+
+if (target < 0) {
+    x = 26; 
+    y = -1; // Jika target < 26, maka y = -1
+    z = multiplier + target; // Hitung z
+    m = (parseInt(x)*parseInt(y))+parseInt(z);
+} else if (target <= 26) {
+    x = 26; 
+    y = 0; // Jika target <= 26, maka y = 0
+    z = target - (multiplier * y); // Hitung z
+    m = (parseInt(x)*parseInt(y))+parseInt(z);
+} else if (target > 26) {
+    x = 26; 
+    y = 1; // Jika target > 26, maka y = 1
+    z = target - (multiplier * y); // Hitung z
+    m = (parseInt(x)*parseInt(y))+parseInt(z);
+}
+const num = parseInt(z, 10);
+let NtoL = numberToLetter(num);
+return `${c} + ${key} = ${h} => ${z} mod 26 = 26 * ${y} + ${z} = ${m} => ${z} => ${NtoL}`; // Show the formula and result
+

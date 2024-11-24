@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-switch input {
+  display: none; /* Hide the checkbox */
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="toggle-container">
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle" />
+          <span class="slider"></span>
+        </label>
+        <button id="actionButton">Click Me</button>
+      </div>
+      
+
+
+    <script>
+        // Define the functions to toggle between
+function functionA() {
+  alert("Function A executed!");
+}
+
+function functionB() {
+  alert("Function B executed!");
+}
+
+// Add event listener to the toggle switch and button
+const toggleSwitch = document.getElementById('toggle');
+const actionButton = document.getElementById('actionButton');
+
+// Default to Function A
+let currentFunction = functionA;
+
+// Update the function based on toggle state
+toggleSwitch.addEventListener('change', () => {
+  currentFunction = toggleSwitch.checked ? functionB : functionA;
+});
+
+// Execute the current function when the button is clicked
+actionButton.addEventListener('click', () => {
+  currentFunction();
+});
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="targetInput" placeholder="Enter target value" min="0" max="50"/>
+    <button onclick="calculate()">Calculate</button>
+    <p id="output"></p>
+    
+    <script>
+    function calculate() {
+        const target = parseInt(document.getElementById("targetInput").value, 10); // Ambil target dari input
+        const multiplier = 26; // Pengali tetap
+        let x, y, z, m;
+        let result = '';
+    
+        if (isNaN(target)) {
+            document.getElementById("output").innerHTML = "Please enter a valid number!";
+            return;
+        }
+    
+        // Tentukan nilai x berdasarkan target
+        if (target < 0) {
+            x = 26; 
+            y = -1; // Jika target < 26, maka y = -1
+            z = multiplier + target; // Hitung z
+            m = (parseInt(x)*parseInt(y))+parseInt(z);
+        } else if (target <= 26) {
+            x = 26; 
+            y = 0; // Jika target <= 26, maka y = 0
+            z = target - (multiplier * y); // Hitung z
+            m = (parseInt(x)*parseInt(y))+parseInt(z);
+        } else if (target > 26) {
+            x = 26; 
+            y = 1; // Jika target > 26, maka y = 1
+            z = target - (multiplier * y); // Hitung z
+            m = (parseInt(x)*parseInt(y))+parseInt(z);
+        }
+    
+        result = `For ${target} mod 26 = 26 * ${y} + ${z} = ${m}`;
+        
+        // Tampilkan hasil
+        document.getElementById("output").innerHTML = result;
+    }
+    </script>
+</body>
+</html>

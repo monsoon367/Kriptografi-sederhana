@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Footer</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <style>
+        /* Reset styles */
+        /* Ensure the HTML and body take full height */
+html, body {
+    min-height: 100%; /* Minimum height ensures body spans full viewport */
+}
+
+/* Layout with Flexbox */
+body {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    min-height: 100vh;      /* Full height of the viewport */
+}
+
+/* Main content flexes to push footer down */
+main {
+    flex: 1; /* Expands to fill remaining space */
+    padding: 20px; /* Optional: Adds padding for better appearance */
+}
+
+/* Footer styling */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Header Section</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div id="IOcontainer">
+                <div class="IO">
+                    <label for="Input Text">Input Text</label>
+                    <br>
+                    <textarea id="text"></textarea>
+    
+                    <div id="IkeyContainer">
+                        <div id="Ikey">
+                            <label for="inputKey">Input Key</label>
+                            <br>
+                            <input type="number" onchange="handleChange(this)" autocomplete="off" id="shift" min="0" max="25" value="0">
+                            <button onclick="resetIKey()">Reset Key</button>
+                        </div>
+                        <div id="loopBtnContainer">
+                            <div>
+                                <label for="LoopValue">Loop Function</label>
+                            </div>
+                            <div>
+                                <label class="switch">
+                                    <input type="checkbox" id="tgOF">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div id="loopBtn" class="">
+                                <button onclick="encryptLoop()">Encrypt</button>
+                                <button onclick="decryptLoop()">Decrypt</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div id="buttonsContainer">
+                        <button onclick="encrypt()">Encrypt</button>
+                        <button onclick="decrypt()">Decrypt</button>
+                        <button onclick="reset()">Reset</button>
+                        <button onclick="copyToClipboard()">Copy To Clipboard</button>
+                        <button onclick="copyToInput()">Copy To Input</button>
+                        <a href="https://youtu.be/dQw4w9WgXcQ?si=7_ZThw3N41da5fpi">
+                            <button>About</button>
+                        </a>
+                    </div>
+                </div>
+    
+                <div class="IO" id="resultContainer">
+                    <label for="Result">Output Text</label>
+                    <br>
+                    <div id="output">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Footer stays at the bottom of the page.</p>
+    </footer>
+
+    <script src="./assets/script.js"></script>
+</body>
+</html>

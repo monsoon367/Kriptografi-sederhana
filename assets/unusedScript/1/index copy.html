@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kriptografi Caesar Chiper</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <h1>Kriptografi Caesar Chiper</h1>
+        <h4>Kel.3 PL 1 A</h4>
+    </header>
+    
+    <div class="container">
+        <div id="Icontainer">
+            <label for="text">Input Text</label>
+            <br>
+            <textarea id="text"></textarea>
+    
+            <div id="IkeyContainer">
+                <div id="Ikey">
+                    <label for="shift">Input Key</label>
+                    <br>
+                    <input type="number" onchange="handleChange(this)" autocomplete="off" id="shift" min="0" max="25" value="0">
+                    <button onclick="resetIKey()">Reset Key</button>
+                </div>
+                
+                <div id="loopBtnContainer">
+                    <div>
+                        <label for="tlOF">Loop Function :</label>
+                    </div>
+                    <div>
+                        <label class="switch">
+                            <input type="checkbox" id="tlOF">
+                            <span class="slider round" id="slider"></span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label for="mfOF">Math Formula :</label>
+                    </div>
+                    <div>
+                        <label class="switch">
+                            <input type="checkbox" id="mfOF">
+                            <span class="slider round" id="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        
+            <div id="buttonsContainer">
+                <button id="encryptBtn">Encrypt</button>
+                <button id="decryptBtn">Decrypt</button>
+                <button onclick="reset()">Reset</button>
+                <button onclick="copyToClipboard()">Copy To Clipboard</button>
+                <button onclick="copyToInput()">Copy To Input</button>
+                <a href="#" id="about">
+                    <button>About</button>
+                </a>
+            </div>
+        </div>
+        
+        <div id="Ocontainer">
+            <div id="resultContainer">
+                <p for="output">Output Text</p>
+                <div id="output"></div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div id="f1">
+            <p>Made by = M Naufal RPL 1 A (and ChatGPT help)</p>
+        </div>
+        <div id="f2">
+            <h2>WARNING!</h2>
+            <p>THIS WEBSITE IS NOT RESPONSIVE FOR DEVICE WITH SCREEN RESOLUTION BELOW 1000x720px!!!</p>
+        </div>
+    </footer>
+
+
+    <script src="./assets/script.js"></script>
+</body>
+</html>

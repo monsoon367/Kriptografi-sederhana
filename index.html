@@ -3,48 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kriptografi</title>
+    <title>Kriptografi Caesar Chiper</title>
+    <link rel="icon" type="image/png" href="../assets/img,vid/img/Caesar Chipper.png">
+
+    <!--for microsoft apps-->
+    <meta name="msapplication-TileImage" content="https://ibb.co.com/HBtQhNg">
+
+    <!--for WA & FB-->
+    <meta property="og:site_name" content="Caesar Chiper">
+    <meta property="og:title" content="Caesar Chiper">
+    <meta property="og:description" content="Caesar Chiper Website">
+
+    <!--image to display-->
+
+    <meta property="og:image" itemprop="image" content="https://ibb.co.com/HBtQhNg">
+
+    <meta property="og:type" content="website" />
+    <meta property="og:image:type" content="https://ibb.co.com/HBtQhNg">
+
+    <!--any size up to 300. anything above 300 will not work in WA-->
+    <meta property="og:image:width" content="300">
+    <meta property="og:image:height" content="300">
+
+    <!--web to visit when clicked for WA & FB-->
+    <meta property="og:url" content="https://12-dkv-1-website.pages.dev">
+
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Kriptografi Caesar Chiper</h1>
-    <h4>Kel.3 PL 1 A</h4>
+    <header>
+        <h1>Kriptografi Caesar Chiper</h1>
+        <h4>Kel.3 PL 1 A</h4>
+    </header>
+    
     <div class="container">
-        <div id="IOcontainer">
-            <div>
-                <label for="Input Text">Input Text</label>
-                <br>
-                <textarea id="text"></textarea>
-            </div>
-            <div>
-                <label for="Result">Result</label>
-                <br>
-                <textarea id="result" readonly></textarea>
-            </div>
-        </div>
+        <div id="Icontainer">
+            <label for="text">Input Text</label>
+            <br>
+            <textarea id="text"></textarea>
+    
+            <div id="IkeyContainer">
+                <div id="Ikey">
+                    <label for="shift">Input Key</label>
+                    <br>
+                    <input type="number" onchange="handleChange(this)" autocomplete="off" id="shift" min="0" max="25" value="0">
+                    <button id="resetIKeyBtn">Reset Key</button>
+                </div>
+                
+                <div id="loopBtnContainer">
+                    <div>
+                        <label for="tlOF">Loop Function :</label>
+                    </div>
+                    <div>
+                        <label class="switch">
+                            <input type="checkbox" id="tlOF">
+                            <span class="slider round" id="slider"></span>
+                        </label>
+                    </div>
 
-        <div id="IkeyContainer">
-            <div id="Ikey">
-                <label for="inputKey">Input Key</label>
-                <br>
-                <input type="number" placeholder="Full Name" autocomplete="off" id="shift" min="0" max="25" value="0">
-                <button onclick="resetKey()">Reset Key</button>
+                    <div>
+                        <label for="mfOF">Math Formula :</label>
+                    </div>
+                    <div>
+                        <label class="switch">
+                            <input type="checkbox" id="mfOF">
+                            <span class="slider round" id="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div id="statusContainer">
+                <p>Status :</p>
+                <p id="status">Regular Function</p> / <p id="EorDstatus">None</p>
+            </div>
+        
+            <div id="buttonsContainer">
+                <button id="encryptBtn">Encrypt</button>
+                <button id="decryptBtn">Decrypt</button>
+                <button id="resetBtn">Reset</button>
+                <button id="copyToClipboardBtn">Copy To Clipboard</button>
+                <button id="copyToInputBtn">Copy To Input</button>
+                <a href="#" id="about">
+                    <button>About</button>
+                </a>
             </div>
         </div>
         
-
-        <div id="buttonsContainer">
-            <button onclick="encrypt()">Encrypt</button>
-            <button onclick="decrypt()">Decrypt</button>
-            <button onclick="reset()">Reset</button>
-            <button onclick="copyToClipboard()">Copy Result Text</button>
-            <button onclick="copyToInput()">Copy To Input</button>
-            <button onclick="about()">About</button>
+        <div id="Ocontainer">
+            <div id="resultContainer">
+                <div>
+                    <p for="output">Output Text</p>
+                </div>
+                <div id="output"></div>
+            </div>
+            
         </div>
-
-
-
     </div>
+    
+    <footer>
+        <div id="f1">
+            <p>Made by = M Naufal RPL 1 A (and ChatGPT help)</p>
+        </div>
+        <div id="f2">
+            <h2>WARNING!</h2>
+            <p>THIS WEBSITE IS NOT RESPONSIVE FOR DEVICE WITH SCREEN RESOLUTION BELOW 1000x720px!!!</p>
+        </div>
+    </footer>
 
 
     <script src="./assets/script.js"></script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Onclick Action</title>
+</head>
+<body>
+    <button id="myButton">Click Me</button>
+    <script>
+        // Initial function
+        function initialFunction() {
+            alert("Initial Action");
+        }
+
+        // New function to replace the old one
+        function newFunction() {
+            alert("New Action!");
+        }
+
+        // Assign initial function to the button
+        const button = document.getElementById("myButton");
+        button.onclick = initialFunction;
+
+        // Change onclick action dynamically
+        setTimeout(() => {
+            button.onclick = newFunction; // Change the onclick action
+        }, 3000); // Change after 3 seconds
+    </script>
+</body>
+</html>

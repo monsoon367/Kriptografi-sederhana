@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="textInput" placeholder="Enter text" />
+    <input type="number" name="" id="In" min="0" max="25">
+    <button onclick="convertToCustomNumbers()">Convert</button>
+    <p id="output"></p>
+    
+    <script>
+    function convertToCustomNumbers() {
+        const input = document.getElementById("textInput").value.toUpperCase(); // Convert input to uppercase
+        const In = document.getElementById("In").value;
+        const results = input.split('').map(letter => {
+            if (letter >= 'A' && letter <= 'Z') {
+                const x = letter.charCodeAt(0) - 65; // Map A=0, ..., Z=25
+                return `${x} + ${In} = ${parseInt(x) + parseInt(In)}`; // Show the formula and result
+            } else if (!isNaN(letter) && letter.trim() !== '') {
+                // Convert numeric characters to numbers and apply the formula
+                const x = parseInt(letter, 10);
+                return `${x} + ${In} = ${parseInt(x) + parseInt(In)}`;
+            } else {
+                // Non-alphabetic and non-numeric characters remain the same
+                return letter;
+            }
+        });
+        document.getElementById("output").innerHTML = results.map(result => `<div>${result}</div>`).join('');
+    }
+    </script>
+</body>
+</html>
